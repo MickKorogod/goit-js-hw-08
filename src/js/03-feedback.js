@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle';
 
 const feedbackForm = document.querySelector('.feedback-form')
-
+const output = document.querySelector('lable')
 function setItem (event) {
     event.preventDefault()
     const { email, message } = event.currentTarget;
@@ -11,12 +11,7 @@ function setItem (event) {
 feedbackForm.addEventListener('input', throttle( setItem, 500))
 
 function updateInput() {
-    if (localStorage.getItem("feedback-form-state") === null) {
-        return
-    }
-    checkInput = JSON.parse(localStorage.getItem("feedback-form-state"))
-    feedbackForm.elements.email.value = checkInput.email;
-    feedbackForm.elements.message.value = checkInput.message;
+  output.textContent = localStorage.getItem("feedback-form-state") || ""
 }
  updateInput()
 
