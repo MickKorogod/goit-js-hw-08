@@ -7,5 +7,8 @@ const onPlay = ({ seconds }) => {
     localStorage.setItem("videoplayer-current-time", seconds)
 }
 const getItem = localStorage.getItem("videoplayer-current-time")
-player.setCurrentTime( getItem)
+if (getItem) {
+    player.setCurrentTime(getItem)
+}
+
 player.on('timeupdate', throttle (onPlay, 500))
