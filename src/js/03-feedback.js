@@ -11,6 +11,7 @@ function setItem(event) {
   if (!output) {
     output = {}
   }
+  else { output = JSON.parse(output)}
   output[event.target.name] = event.target.value
 
   localStorage.setItem("feedback-form-state", JSON.stringify(output))
